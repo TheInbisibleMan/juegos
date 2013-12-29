@@ -141,7 +141,7 @@ Q.scene('endGame',function(stage) {
   // and restart the game.
   button.on("click",function() {
     Q.clearStages();
-    Q.stageScene('level1');
+    Q.stageScene('level2');
   });
 
   // Expand the container to visibily fit it's contents
@@ -153,7 +153,7 @@ Q.scene('endGame',function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png", function() {
+Q.load("sprites.png, sprites.json, level2.json, tiles.png, background-wall.png", function() {
   // Sprites sheets can be created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
 
@@ -161,7 +161,7 @@ Q.load("sprites.png, sprites.json, level.json, tiles.png, background-wall.png", 
   Q.compileSheets("sprites.png","sprites.json");
 
   // Finally, call stageScene to run the game
-  Q.stageScene("level1");
+  Q.stageScene("level2");
 });
 
 // ## Possible Experimentations:
