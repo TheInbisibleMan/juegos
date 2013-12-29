@@ -49,7 +49,7 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "You Won!" }); 
+        Q.stageScene("endGame",1, { label: "Fede, ganastes, criatura!" }); 
         this.destroy();
       }
     });
