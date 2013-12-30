@@ -1,5 +1,9 @@
 // CONFIGURACION
-var levelfile= "level2.json"; //archivo donde esta el mapa del nivel
+var levelfile= "level.json"; //archivo donde esta el mapa del nivel
+
+/* NOTAS:
+Cada pantalla se crea con Q.scene(...);
+*/
 
 // # Quintus platformer example
 //
@@ -52,13 +56,12 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("endGame",1, { label: "Fede, ganastes, criatura!" }); 
+        Q.stageScene("level2",1, {}); //NOTA: aca pasa a nivel2
         this.destroy();
       }
     });
 
   }
-
 });
 
 
@@ -103,6 +106,32 @@ Q.Sprite.extend("Enemy",{
 // ## Level1 scene
 // Create a new scene called level 1
 Q.scene("level1",function(stage) {
+
+  // Add in a repeater for a little parallax action
+  stage.insert(new Q.Repeater({ asset: "background-wall.png", speedX: 0.5, speedY: 0.5 }));
+
+  // Add in a tile layer, and make it the collision layer
+  stage.collisionLayer(new Q.TileLayer({
+                             dataAsset: levelfile,
+                             sheet:     'tiles' }));
+
+
+  // Create the player and add them to the stage
+  var player = stage.insert(new Q.Player());
+
+  // Give the stage a moveable viewport and tell it
+  // to follow the player.
+  stage.add("viewport").follow(player);
+
+  // Add in a couple of enemies
+  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+  stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+
+  // Finally add in the tower goal
+  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+});
+
+Q.scene("level2",function(stage) {
 
   // Add in a repeater for a little parallax action
   stage.insert(new Q.Repeater({ asset: "background-wall.png", speedX: 0.5, speedY: 0.5 }));
