@@ -63,8 +63,15 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-				
-        nivelActualSet_("level2",1, {}); //NOTA: aca pasa a nivel2
+				if (nivelActual=="level1") {	
+        	nivelActualSet_("level2",1, {}); //NOTA: aca pasa a nivel2
+				}
+				else if (nivelActual=="level2") { //A: asumo que estaba en nivel2
+        	nivelActualSet_("endGame",1, { label: "Ganastes" }); //NOTA: aca pasa a nivel2
+				}
+				else { //A: de momento este caso no deberia pasar NUNCA
+        	nivelActualSet_("endGame",1, { label: "Como llegamos aca?" }); 
+				}
         this.destroy();
       }
     });
