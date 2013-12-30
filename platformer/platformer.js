@@ -45,8 +45,8 @@ Q.Sprite.extend("Player",{
     // You can call the parent's constructor with this._super(..)
     this._super(p, {
       sheet: "player",  // Setting a sprite sheet sets sprite width and height
-      x: 410,           // You can also set additional properties that can
-      y: 90             // be overridden on object creation
+      x: 400,           // You can also set additional properties that can
+      y: 190             // be overridden on object creation
     });
 
     // Add in pre-made components to get up and running quickly
@@ -180,7 +180,7 @@ Q.scene("level2",function(stage) {
 
 
   // Create the player and add them to the stage
-  var player = stage.insert(new Q.Player({ x: 90, y: 100}));
+  var player = stage.insert(new Q.Player({ x: 90, y: 401}));
 
   // Give the stage a moveable viewport and tell it
   // to follow the player.
