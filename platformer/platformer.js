@@ -1,3 +1,6 @@
+// CONFIGURACION
+var levelfile= "level2.json"; //archivo donde esta el mapa del nivel
+
 // # Quintus platformer example
 //
 // [Run the example](../examples/platformer/index.html)
@@ -106,7 +109,7 @@ Q.scene("level1",function(stage) {
 
   // Add in a tile layer, and make it the collision layer
   stage.collisionLayer(new Q.TileLayer({
-                             dataAsset: 'level2.json',
+                             dataAsset: levelfile,
                              sheet:     'tiles' }));
 
 
@@ -153,7 +156,7 @@ Q.scene('endGame',function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, level2.json, tiles.png, background-wall.png", function() {
+Q.load("sprites.png, sprites.json, "+ levelfile +", tiles.png, background-wall.png", function() {
   // Sprites sheets can be created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
 
