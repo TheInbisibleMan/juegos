@@ -75,6 +75,10 @@ Q.Sprite.extend("Player",{
 				}
         this.destroy();
       }
+      if(collision.obj.isA("Pincho")) {
+        nivelActualSet_("endGame",1, {label:"Te pinchastes"});
+        this.destroy();
+      }
     });
 
   }
@@ -86,6 +90,12 @@ Q.Sprite.extend("Player",{
 Q.Sprite.extend("Tower", {
   init: function(p) {
     this._super(p, { sheet: 'tower' });
+  }
+});
+
+Q.Sprite.extend("Pincho", {
+  init: function(p) {
+    this._super(p, { sheet: 'pincho' });
   }
 });
 
@@ -166,7 +176,9 @@ Q.scene("level1",function(stage) {
 
   // Finally add in the tower goal
   stage.insert(new Q.Tower({ x: 180, y: 50 }));
+  stage.insert(new Q.Pincho({ x: 300, y: 50}));
 });
+
 
 Q.scene("level2",function(stage) {
 
