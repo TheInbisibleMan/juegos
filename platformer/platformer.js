@@ -103,7 +103,7 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-        nivelActualSet_("endGame",1, { label: "You Died" }); 
+        nivelActualSet_("endGame",1, { label: "Moristes" }); 
         collision.obj.destroy();
       }
     });
