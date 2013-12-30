@@ -1,6 +1,13 @@
 // CONFIGURACION
 var levelfile= "level.json"; //archivo donde esta el mapa del nivel
 
+// ESTAD, XXX: mover dentro de las clases del juego
+var nivelActual= "startGame";
+
+function nivelActualSet_(unNivel,n,opts) {
+	nivelActual= unNivel;
+	Q.stageScene(nivelActual,n,opts);
+}
 /* NOTAS:
 Cada pantalla se crea con Q.scene(...);
 */
@@ -56,7 +63,8 @@ Q.Sprite.extend("Player",{
 
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
-        Q.stageScene("level2",1, {}); //NOTA: aca pasa a nivel2
+				
+        nivelActualSet_("level2",1, {}); //NOTA: aca pasa a nivel2
         this.destroy();
       }
     });
@@ -87,7 +95,7 @@ Q.Sprite.extend("Enemy",{
     // end the game unless the enemy is hit on top
     this.on("bump.left,bump.right,bump.bottom",function(collision) {
       if(collision.obj.isA("Player")) { 
-        Q.stageScene("endGame",1, { label: "You Died" }); 
+        nivelActualSet_("endGame",1, { label: "You Died" }); 
         collision.obj.destroy();
       }
     });
@@ -102,6 +110,27 @@ Q.Sprite.extend("Enemy",{
     });
   }
 });
+
+// to control the displayed message.
+Q.scene('startGame',function(stage) {
+  var container = stage.insert(new Q.UI.Container({
+    x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
+  }));
+
+  var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                  label: "Empezar" }))         
+  // When the button is clicked, clear all the stages
+  // and restart the game.
+  button.on("click",function() {
+    Q.clearStages();
+    nivelActualSet_('level1');
+  });
+
+  // Expand the container to visibily fit it's contents
+  // (with a padding of 20 pixels)
+  container.fit(20);
+});
+
 
 // ## Level1 scene
 // Create a new scene called level 1
@@ -173,7 +202,7 @@ Q.scene('endGame',function(stage) {
   // and restart the game.
   button.on("click",function() {
     Q.clearStages();
-    Q.stageScene('level1');
+    nivelActualSet_('startGame');
   });
 
   // Expand the container to visibily fit it's contents
@@ -193,7 +222,7 @@ Q.load("sprites.png, sprites.json, "+ levelfile +", tiles.png, background-wall.p
   Q.compileSheets("sprites.png","sprites.json");
 
   // Finally, call stageScene to run the game
-  Q.stageScene("level1");
+  nivelActualSet_("startGame");
 });
 
 // ## Possible Experimentations:
