@@ -180,18 +180,16 @@ Q.scene("level2",function(stage) {
 
 
   // Create the player and add them to the stage
-  var player = stage.insert(new Q.Player());
+  var player = stage.insert(new Q.Player({ x: 90, y: 100}));
 
   // Give the stage a moveable viewport and tell it
   // to follow the player.
   stage.add("viewport").follow(player);
 
   // Add in a couple of enemies
-  stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-  stage.insert(new Q.Enemy({ x: 800, y: 0 }));
 
   // Finally add in the tower goal
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+  stage.insert(new Q.Tower({ x: 1490, y: 401 }));
 });
 
 // To display a game over / game won popup box, 
