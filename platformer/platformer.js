@@ -198,7 +198,17 @@ Q.scene("level2",function(stage) {
   stage.add("viewport").follow(player);
 
   // Add in a couple of enemies
-
+    function agregarPinchos(cuantos,col) {
+        for (i=0; i<cuantos ; i++) {
+            stage.insert(new Q.Pincho({ x: 275+col*32+i*32, y: 465 }));
+        }
+    }
+    agregarPinchos(3,0)
+    agregarPinchos(1,7)
+    agregarPinchos(2,9)
+    agregarPinchos(3,12)
+    agregarPinchos(3,16)
+    
   // Finally add in the tower goal
   stage.insert(new Q.Tower({ x: 1490, y: 401 }));
 });
