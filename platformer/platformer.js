@@ -1,5 +1,6 @@
 // CONFIGURACION
-var levelfile= "level.json"; //archivo donde esta el mapa del nivel
+var levelfile1= "level.json"; //archivo donde esta el mapa del nivel
+var levelfile2= "level2.json"; //archivo donde esta el mapa del nivel
 
 // ESTAD, XXX: mover dentro de las clases del juego
 var nivelActual= "startGame";
@@ -148,7 +149,7 @@ Q.scene("level1",function(stage) {
 
   // Add in a tile layer, and make it the collision layer
   stage.collisionLayer(new Q.TileLayer({
-                             dataAsset: levelfile,
+                             dataAsset: levelfile1,
                              sheet:     'tiles' }));
 
 
@@ -174,7 +175,7 @@ Q.scene("level2",function(stage) {
 
   // Add in a tile layer, and make it the collision layer
   stage.collisionLayer(new Q.TileLayer({
-                             dataAsset: levelfile,
+                             dataAsset: levelfile2,
                              sheet:     'tiles' }));
 
 
@@ -221,7 +222,7 @@ Q.scene('endGame',function(stage) {
 // Q.load can be called at any time to load additional assets
 // assets that are already loaded will be skipped
 // The callback will be triggered when everything is loaded
-Q.load("sprites.png, sprites.json, "+ levelfile +", tiles.png, background-wall.png, background-wall-azul.png", function() {
+Q.load("sprites.png, sprites.json, "+ levelfile1 +","+levelfile2+", tiles.png, background-wall.png, background-wall-azul.png", function() {
   // Sprites sheets can be created manually
   Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
 
