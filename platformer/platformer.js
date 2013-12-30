@@ -106,7 +106,7 @@ Q.scene("level1",function(stage) {
 
   // Add in a tile layer, and make it the collision layer
   stage.collisionLayer(new Q.TileLayer({
-                             dataAsset: 'level.json',
+                             dataAsset: 'level2.json',
                              sheet:     'tiles' }));
 
 
@@ -141,7 +141,7 @@ Q.scene('endGame',function(stage) {
   // and restart the game.
   button.on("click",function() {
     Q.clearStages();
-    Q.stageScene('level2');
+    Q.stageScene('level1');
   });
 
   // Expand the container to visibily fit it's contents
@@ -161,7 +161,7 @@ Q.load("sprites.png, sprites.json, level2.json, tiles.png, background-wall.png",
   Q.compileSheets("sprites.png","sprites.json");
 
   // Finally, call stageScene to run the game
-  Q.stageScene("level2");
+  Q.stageScene("level1");
 });
 
 // ## Possible Experimentations:
